@@ -1,0 +1,22 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      enabled: true
+      server:
+        jdbc:
+          sql: select `key`, value   from PROPERTIES  where APPLICATION=? and PROFILE=? and LABEL=?
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: 'root'
+    password: '0000'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  profiles:
+    active:
+      - jdbc  # jdbc backend를 사용하기 위해 추가
+
+
+
